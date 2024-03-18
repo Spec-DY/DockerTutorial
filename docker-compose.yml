@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+    image: spectrumdy/myapp-backend:2.0
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+    image: spectrumdy/myapp-frontend:2.0
+    ports:
+      - "8080:80"

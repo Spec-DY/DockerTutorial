@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #b5fffd;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        h1 {
+            color: #000000;
+        }
+    
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+    
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+    
+        button:hover {
+            background-color: #0dba00;
+        }
+
+        #response {
+            margin-top: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        #guesses {
+            width: 100%;
+            overflow: hidden;
+            max-width: 300px;
+            margin-top: 20px;
+            flex-direction: column-reverse;
+        }
+
+        .guess {
+            background-color: #efefef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    
+    
+
+</head>
+<body>
+    <h1>Please guess a number between 1-100</h1>
+    <input type="number" id="guess" min="1" max="100">
+    <button onclick="makeGuess()">Guess!</button>
+    <p id="response"></p>
+    <div id="guesses"></div>
+
+    <script>
+        function makeGuess() {
+            const number = document.getElementById('guess').value;
+            fetch('http://localhost:5000/guess', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ number: parseInt(number, 10) }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const guesses = document.getElementById('guesses');
+                const guess = document.createElement('div');
+                guess.className = 'guess';
+                guess.textContent = `Guess ${number}: ${data}`;
+                if (guesses.firstChild) {
+                    guesses.insertBefore(guess, guesses.firstChild);
+                } else {
+                    guesses.appendChild(guess);
+                }
+                if (guesses.children.length > 2) {
+                guesses.removeChild(guesses.lastChild);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+    
+</body>
+</html>
