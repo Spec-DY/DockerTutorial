@@ -93,7 +93,7 @@
     <script>
         function makeGuess() {
             const number = document.getElementById('guess').value;
-            fetch('http://localhost:5000/guess', {
+            fetch('/api/guess', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
