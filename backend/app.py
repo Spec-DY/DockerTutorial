@@ -8,7 +8,7 @@ CORS(app)
 # random num
 random_number = randint(1, 100)
 
-@app.route('/guess', methods=['POST'])
+@app.route('/api/guess', methods=['POST'])
 def guess():
     global random_number
     user_guess = request.json['number']
