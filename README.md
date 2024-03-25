@@ -8,7 +8,7 @@ This demo showcases a guessing number website, where the frontend displays an in
 # Instructions
 1. Download Docker
 2. Clone this repo
-3. docker-compose up --build
+3. docker compose up --build
 
 
 # Key Docker Concepts:
