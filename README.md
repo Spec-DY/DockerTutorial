@@ -1,6 +1,6 @@
 # Introduction to Docker
 
-Docker is a powerful tool for automating the deployment of applications inside lightweight, portable containers. These containers can run on any machine that has Docker installed, providing consistency across development, testing, and production environments.
+Docker is a powerful tool for automating the deployment of applications inside lightweight, portable containers. These containers can run on any machine that has Docker installed, providing consistency across development, testing, and production environments. This tutorial will provide some basic instructions on how to use Docker.
 
 # Description of this demo
 This demo is a guessing number website, where frontend displays the interactive user interface, backend valites the number user entered. The user will guess a number between 1 - 100.
