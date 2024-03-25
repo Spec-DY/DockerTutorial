@@ -9,7 +9,7 @@ This demo showcases a guessing number website, where the frontend displays an in
 1. Download Docker
 2. Clone this repo
 3. docker compose up --build
-4. Enter your LAN IP address in browser
+4. Enter your IP address in browser
 
 
 # Key Docker Concepts:
